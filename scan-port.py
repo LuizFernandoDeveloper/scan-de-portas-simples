@@ -1,11 +1,9 @@
 import socket
 
+portas = [21, 22, 23, 25, 80, 443, 3306]
 
-sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-sock.connect_ex(("google.com", 50))
-sock.send("test\n".encode())
-
-resposta = sock.recv(1024)
-
-print(resposta)
+for porta in portas:
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.settimeout(0.05)
+    codigo = sock.connect_ex(("google.com", porta))
+    print(codigo)
