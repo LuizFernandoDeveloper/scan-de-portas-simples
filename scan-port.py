@@ -6,4 +6,8 @@ for porta in portas:
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.settimeout(0.05)
     codigo = sock.connect_ex(("google.com", porta))
-    print(codigo)
+    if codigo == 0: 
+        print("Porta:", porta, "| Status: Aberta (", codigo,")")
+
+    else:
+        print("Porta:", porta, "| Status: Fechada (", codigo,")")
